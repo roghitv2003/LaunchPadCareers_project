@@ -35,6 +35,7 @@ public class PostController {
         System.out.println(">>> DB NAME = " + mongoTemplate.getDb().getName());
         System.out.println(">>> COLLECTION EXISTS = " + mongoTemplate.collectionExists(Post.class));
         System.out.println(">>> COUNT = " + mongoTemplate.count(new org.springframework.data.mongodb.core.query.Query(), Post.class));
+        int i = 9/0;
         return repo.findAll();
     }
     @GetMapping("/posts/{text}")
