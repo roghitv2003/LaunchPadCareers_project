@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
     private static final Logger LOGGER= LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Before("execution(public * com.launchPad.jobs.controller.getAllPosts())")  //loging
+    @Before("execution(public * com.launchPad.jobs.controller.PostController.getAllPosts())")  //loging
     public void logBefore()
     {
         LOGGER.info("Spring AOP :Methode called from aspect");
@@ -19,13 +19,13 @@ public class LoggingAspect {
 
     //@After -> After(final)
 
-    @AfterReturning("execution(public * com.launchPad.jobs.controller.getAllPosts())")  //After Full execution
+    @AfterReturning("execution(public * com.launchPad.jobs.controller.PostController.getAllPosts())")  //After Full execution
     public void logAfter()
     {
         LOGGER.info("Spring AOP :Methode Executed");
     }
 
-    @AfterThrowing("execution(public * com.launchPad.jobs.controller.getAllPosts())")  //Error comes mean it throw log
+    @AfterThrowing(pointcut = "execution(public * com.launchPad.jobs.controller.PostController.getAllPosts())")  //Error comes mean it throw log
     public void logException()
     {
         LOGGER.info("Issue");
